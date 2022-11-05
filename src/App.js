@@ -1,6 +1,10 @@
 import React, { useEffect, useState, createContext } from "react";
-import Trending from "./Components/Trending/Trending";
-import SearchMovies from "./Components/Search/Search";
+import { Route, Routes } from "react-router-dom";
+import Nav from "./Components/Nav/Nav";
+import Movies from "./Components/Trending/Movies";
+import SearchMovies from "./Components/Search/SearchMovie";
+import Series from "./Components/Trending/Series";
+import "./App.css";
 
 export const DataContext = createContext();
 
@@ -8,32 +12,34 @@ export default function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // declare the async data fetching function
     const fetchData = async () => {
-      // get the data from the api
       const response = await fetch("http://localhost:4000/movies", {
         mode: "cors",
       });
-      // convert the data to json
       const json = await response.json();
-      // set state with the result
       setData(json.data.results);
     };
 
-    // call the function
-    fetchData()
-      // make sure to catch any error
-      .catch(console.error);
+    fetchData().catch(console.error);
   }, []);
 
-  // data.forEach((d) => console.log(d));
-
+  console.log(data);
   return (
-    <div>
-      {/* <SearchMovies /> */}
-      <DataContext.Provider value={data}>
-        <Trending />
-      </DataContext.Provider>
+    <div className="App">
+      <Nav />
+      <SearchMovies />
+      <h2>Trending</h2>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <DataContext.Provider value={data}>
+              <Movies />
+            </DataContext.Provider>
+          }
+        />
+        <Route path="/series" element={<Series />} />
+      </Routes>
     </div>
   );
 }

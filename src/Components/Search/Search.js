@@ -1,33 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Movie from "../Movie/Movie";
+import "./Search.css";
 
-export default function SearchMovies() {
-  // Track states: input query, movies
-  const [query, setQuery] = useState("");
-  const [movies, setMovies] = useState([]);
-  async function searchMovies(e) {
-    // prevent page reload
-    e.preventDefault();
-
-    try {
-      // use fetch api if you're making a GET request to return a promise
-      const res = await fetch("http://localhost:4000/serach", {
-        mode: "cors",
-      });
-      const json = res.json();
-      // update movies
-      setMovies(json.data.results);
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  console.log(movies);
+export default function Search({ searchMovies, query, setQuery, movies }) {
   return (
-    <>
+    <div>
       <form className="form" onSubmit={searchMovies}>
         <label htmlFor="query" className="label">
-          Movie Name
+          Movies
         </label>
         <input
           type="text"
@@ -42,10 +22,19 @@ export default function SearchMovies() {
         </button>
       </form>
       <div className="card-list">
-        {/* {movies.map((movie) => (
-          <Movie movie={movie} key={movie.id} />
-        ))} */}
+        {movies.map((movie, id) => {
+          return (
+            <Movie
+              key={id}
+              overview={movie.overview}
+              image={movie.poster_path}
+              title={movie.title}
+              date={movie.release_date}
+              rating={movie.vote_average}
+            />
+          );
+        })}
       </div>
-    </>
+    </div>
   );
 }

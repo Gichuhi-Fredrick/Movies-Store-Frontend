@@ -1,0 +1,16 @@
+.form {
+  margin-top: 2rem;
+}
+
+.label {
+  font-size: 1.3rem;
+  /* color: rgb(56, 241, 241); */
+  padding-right: 1rem;
+}
+
+.input {
+  opacity: 0.5;
+  height: auto;
+  width: 60%;
+  outline: none;
+}

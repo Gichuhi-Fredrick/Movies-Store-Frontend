@@ -1,0 +1,22 @@
+.trending {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  /* flex-direction: row; */
+}
+
+.movie-container {
+  gap: 1rem;
+  /* width: 100%; */
+  margin: 0 auto;
+  max-width: 500px;
+  /* border: 1px solid white; */
+}
+
+@media screen and (max-width: 800px) {
+  .trending {
+    flex-direction: row;
+    background-color: white;
+  }
+}
