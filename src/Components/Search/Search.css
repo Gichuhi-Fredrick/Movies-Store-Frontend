@@ -14,3 +14,29 @@
   width: 60%;
   outline: none;
 }
+
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+}
+
+.movie {
+  width: 12rem;
+  height: 23rem;
+  margin: 0 auto;
+  border-radius: 20px;
+  background-color: rgb(5, 2, 2);
+}
+
+@media (min-width: 600px) {
+  .movie-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .movie {
+    width: 15rem;
+    width: 10rem;
+  }
+}

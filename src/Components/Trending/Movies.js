@@ -6,21 +6,19 @@ import "./Trending.css";
 export default function TrendingMovies() {
   const movieData = useContext(DataContext);
   return (
-    <div className="trending">
-      <div className="movie-container">
-        {movieData.map((data, id) => {
-          return (
-            <Movie
-              key={id}
-              overview={data.overview}
-              image={data.poster_path}
-              title={data.title}
-              date={data.release_date}
-              rating={data.vote_average}
-            />
-          );
-        })}
-      </div>
+    <div className="movie-container">
+      {movieData.map((data, id) => {
+        return (
+          <Movie
+            className="movie"
+            key={id}
+            image={data.poster_path}
+            title={data.title}
+            date={data.release_date}
+            rating={data.vote_average}
+          />
+        );
+      })}
     </div>
   );
 }

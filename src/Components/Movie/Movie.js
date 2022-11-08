@@ -7,19 +7,23 @@ export default function Movie({ rating, title, date, overview, image }) {
       <div>
         <h3>{title}</h3>
       </div>
-      <div className="image">
-        <img
-          // className="image"
-          src={`https://image.tmdb.org/t/p/w300/${image}`}
-          alt="poster"
-        />
-      </div>
+      <div className="image"></div>
+      <img
+        className="image"
+        src={`https://image.tmdb.org/t/p/w300/${image}`}
+        alt="poster"
+      />
       <div className="overview">
-        <p>{overview}.</p>
+        <p>{overview}</p>
       </div>
-      <div className="date">
-        <span>Release date: {date}</span>
-        <span>Rating: {rating}</span>
+      <div className="date-rate">
+        <div>
+          <small className="date">Release date: {date}</small>
+        </div>
+        <div>
+          {" "}
+          <small className="rating">Rating: {rating}</small>
+        </div>
       </div>
     </div>
   );

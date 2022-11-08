@@ -1,8 +1,7 @@
 .App {
   min-width: none;
   text-align: center;
-  width: 100%;
+  width: 90%;
   height: auto;
   margin: 0 auto;
-  background: rgb(10, 21, 36);
 }

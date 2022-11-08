@@ -21,10 +21,11 @@ export default function Search({ searchMovies, query, setQuery, movies }) {
           Search
         </button>
       </form>
-      <div className="card-list">
+      <div className="card-list movie-contianer">
         {movies.map((movie, id) => {
           return (
             <Movie
+              className="movie"
               key={id}
               overview={movie.overview}
               image={movie.poster_path}

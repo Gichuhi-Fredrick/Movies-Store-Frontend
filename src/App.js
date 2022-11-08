@@ -10,6 +10,7 @@ export const DataContext = createContext();
 
 export default function App() {
   const [data, setData] = useState([]);
+  const [route, setRoute] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,17 +30,21 @@ export default function App() {
       <Nav />
       <SearchMovies />
       <h2>Trending</h2>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <DataContext.Provider value={data}>
-              <Movies />
-            </DataContext.Provider>
-          }
-        />
-        <Route path="/series" element={<Series />} />
-      </Routes>
+      <div className="movies">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <DataContext.Provider value={data}>
+                <div>
+                  <Movies />
+                </div>
+              </DataContext.Provider>
+            }
+          />
+          <Route path="/series" element={<Series />} />
+        </Routes>
+      </div>
     </div>
   );
 }

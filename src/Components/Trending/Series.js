@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Movie from "../Movie/Movie";
 import SearchSeries from "../Search/SearchSeries";
+import "./Trending.css";
 
 export default function TrendingMovies() {
   const [seriesData, setData] = useState([]);
@@ -18,20 +19,21 @@ export default function TrendingMovies() {
 
   return (
     <div>
-      <SearchSeries />
-      {seriesData.map((data, id) => {
-        return (
-          <Movie
-            key={id}
-            overview={data.overview}
-            image={data.poster_path}
-            title={data.title}
-            date={data.first_air_date}
-            rating={data.vote_average}
-          />
-        );
-      })}
-      <Movie />
+      {/* <SearchSeries /> */}
+      <div className="movie-container">
+        {seriesData.map((data, id) => {
+          return (
+            <Movie
+              className="movie"
+              key={id}
+              image={data.poster_path}
+              title={data.original_name}
+              date={data.first_air_date}
+              rating={data.vote_average.toFixed(1)}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
